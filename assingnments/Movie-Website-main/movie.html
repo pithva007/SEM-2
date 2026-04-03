@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header data-aos="fade-down" data-aos-duration="2000">
+        <h1><span style="color: #ff0040;">Movie</span>Byte</h1>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="movie.html">Movie</a>
+          <a href="anime.html">Anime</a>
+          <a href="series.html">series</a>
+        </nav>
+  
+        <div class="search-box">
+          <img src="image/search.png" alt=search-icon">
+          <input type="text" name="Search" placeholder="search" >
+        </div>
+        <div class="login_signup">
+            
+            <div class="auth-buttons">
+                <button onclick="openModal('login')">Login</button>
+                <button onclick="openModal('signup')">Sign Up</button>
+            </div>
+            
+            <!-- Login Modal -->
+            <div class="modal hidden" id="loginModal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('login')">&times;</span>
+                    <form class="auth-form" onsubmit="return validateLogin()">
+                        <h2>Login</h2>
+                        <input type="text" id="loginUsername" placeholder="Username" required>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Signup Modal -->
+            <div class="modal hidden" id="signupModal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('signup')">&times;</span>
+                    <form class="auth-form" onsubmit="return validateSignup()">
+                        <h2>Sign Up</h2>
+                        <input type="text" id="signupUsername" placeholder="Username" required>
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="image/7.png">
+                <div class="content">
+                    <h1>Bahubali 2</h1>
+                    <div class="details">
+                        <p>2020</p>
+                        <p>17+</p>
+                        <p>2 Seasons</p>
+                        <p>Action</p>
+                    </div>
+                    <h4>After learning that his father was brutally killed by Bhallaladeva, Mahendra Baahubali raises an army to defeat him and release his mother from the former's captivity.</h4>
+        
+                    <div class="buttons">
+                        <a href="https://hblinks.pro/archives/70455"><button class="download-btn">Download</button></a>
+                        <button class="trailer-btn">Trailer</button>
+                    </div>
+                    <div class="vid-box">
+                        <video controls id="vid" class="vid-trailer"  src="video/squid game.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/8.png">
+                <div class="content">
+                    <h1>KGF 2</h1>
+                    <div class="details">
+                        <p>2020</p>
+                        <p>17+</p>
+                        <p>2 Seasons</p>
+                        <p>Action</p>
+                    </div>
+                    <h4>Rocky successfully rises as the leader and saviour of the people of the Kolar Gold Fields. But, in his goal to fulfil his mother's wishes, Rocky must tackle Adheera, Inayat Khalil and Ramika Sen.</h4>
+        
+                    <div class="buttons">
+                        <a href="https://new16.gdtot.dad/file/532356056"><button class="download-btn">Download</button></a>
+                        <button class="trailer-btn">Trailer</button>
+                    </div>
+                    <div class="vid-box">
+                        <video controls id="vid" class="vid-trailer"  src="video/squid game.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/9.png">
+                <div class="content">
+                    <h1>RRR</h1>
+                    <div class="details">
+                        <p>2020</p>
+                        <p>17+</p>
+                        <p>2 Seasons</p>
+                        <p>Action</p>
+                    </div>
+                    <h4>A fearless revolutionary and an officer in the British force, who once shared a deep bond, decide to join forces and chart out an inspirational path of freedom against the despotic rulers.</h4>
+        
+                    <div class="buttons">
+                        <a href="https://hblinks.pro/archives/46113"><button class="download-btn">Download</button></a>
+                        <button class="trailer-btn">Trailer</button>
+                    </div>
+                    <div class="vid-box">
+                        <video controls id="vid" class="vid-trailer"  src="video/squid game.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            
+            <div class="item">
+                <img src="image/7.png">
+                <div class="thum-content">
+                    <div class="title">
+                        Bahubali 2
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/8.png">
+                <div class="thum-content">
+                    <div class="title">
+                       KGF 2
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/9.png">
+                <div class="thum-content">
+                    <div class="title">
+                        RRR
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- next prev -->
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
