@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .table-container {
+                max-width: 600px;
+                margin: 40px auto;
+                font-family: Times New Roman, serif;
+              }
+              
+              .caption {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+              }
+              
+              .outer-border {
+                border: 3px  black;
+                padding: 2px;
+              }
+              
+              table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 2px solid black;
+              }
+              
+              td {
+                border: 2px solid black;
+                padding: 8px;
+                vertical-align: top;
+              }
+              
+              .center {
+                text-align: center;
+              }
+              
+              .bold {
+                font-weight: bold;
+              }
+              
+              .nested-table {
+                margin: 0 auto;
+                width: 100%;
+              }
+              
+              .nested-table td {
+                padding: 4px;
+              }
+              
+              ol {
+                margin: 0;
+                padding-left: 25px;
+              }
+              
+              img {
+                width: 100%;
+                display: block;
+                border: 2px solid black;
+              }
+    </style>
+      
+    </head>
+    <body>
+        <div class="table-container">
+            <div class="caption">Caption: Table Example</div>
+            <div class="outer-border">
+              <table>
+                <tr>
+                  <td colspan="3" class="center bold">Header-1</td>
+                  <td rowspan="2" class="center bold">RIGHT CORNER OF TABLE</td>
+                </tr>
+                
+                <tr>
+                  <td colspan="2" class="center bold">Header-2</td>
+                  <td class="center bold">Header-3</td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    <ol>
+                      <li>Lists can be table data</li>
+                      <li>Images can be table data</li>
+                    </ol>
+                  </td>
+                  <td rowspan="2" class="center" style="vertical-align: middle;">
+                    Two Tall<br> 
+                  </td>
+                  <td colspan="3" class="center">Two columns merged</td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&q=80&w=500" 
+                         alt="The Planets">
+                  </td>
+                  <td>
+                      data here
+                  </td>
+                  <td>
+                    <div class="center">
+                      <div class="bold">Caption:</div>
+                      <div class="bold">Nested Table</div>
+                      <table class="nested-table">
+                        <tr>
+                          <td class="center bold">Header</td>
+                        </tr>
+                        <tr>
+                          <td class="center">Cell data</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </td>
+                  <td>
+                    Multiple lines:<br>
+                    Line 1<br>
+                    Line 2<br>
+                    Line 3
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td colspan="4" class="center bold">Table Footer</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+    </body>
+</html>
+
+       

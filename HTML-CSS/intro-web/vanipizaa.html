@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pizza Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .summary {
+      margin-top: 20px;
+      background-color: #e0ffe0;
+      border: 1px solid #6cc070;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Pizza Order Form</h2>
+    <form id="pizzaForm">
+
+      <label for="name">Customer Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+
+      <label>Pizza Type</label>
+      <input type="radio" id="regular" name="pizzaType" value="regular">
+      <label for="regular">Regular (₹200)</label><br>
+      <input type="radio" id="pan" name="pizzaType" value="pan">
+      <label for="pan">Pan (₹250)</label>
+
+      <label for="toppings">Select Toppings (Choose multiple, if any)</label>
+      <select id="toppings" multiple>
+        <option value="cheese">Cheese (₹25)</option>
+        <option value="capsicum">Capsicum (₹30)</option>
+        <option value="pepperoni">Pepperoni (₹40)</option>
+      </select>
+
+      <button type="button" id="orderBtn">Place Order</button>
+    </form>
+
+    <div id="summary" class="summary" style="display: none;"></div>
+  </div>
+
+  <script>
+    function placeOrder() 
+    {
+      const name = document.getElementById("name").value.trim();
+      const pizzaType = document.querySelector('input[name="pizzaType"]:checked');
+      const toppingsSelect = document.getElementById("toppings");
+      const selectedOptions = toppingsSelect.selectedOptions;
+
+      const summaryDiv = document.getElementById("summary");
+      let totalAmount = 0;
+      let pizzaPrice = 0;
+
+      // Validate name
+      if (name === "") {
+        alert("Please enter your name.");
+        return;
+      }
+
+      // Validate pizza type
+      if (!pizzaType) {
+        alert("Please select a pizza type.");
+        return;
+      }
+
+      // Set base pizza price
+      if (pizzaType.value === "regular") {
+        pizzaPrice = 200;
+      } else if (pizzaType.value === "pan") {
+        pizzaPrice = 250;
+      }
+
+      totalAmount += pizzaPrice;
+
+      // Add topping prices
+      let toppingList = [];
+      for (let i = 0; i < selectedOptions.length; i++) {
+        const topping = selectedOptions[i].value;
+        toppingList.push(topping);
+
+        if (topping === "cheese") totalAmount += 25;
+        else if (topping === "capsicum") totalAmount += 30;
+        else if (topping === "pepperoni") totalAmount += 40;
+      }
+
+      // Create summary message
+      let summary = `<strong>Thank you, ${name}!</strong><br>`;
+      summary += `You ordered a <strong>${pizzaType.value.toUpperCase()}</strong> pizza.<br>`;
+      if (toppingList.length > 0) {
+        summary += `Toppings: ${toppingList.join(", ")}<br>`;
+      } else {
+        summary += `No extra toppings selected.<br>`;
+      }
+      summary += `<strong>Total Bill: ₹${totalAmount}</strong>`;
+
+      summaryDiv.innerHTML = summary;
+      summaryDiv.style.display = "block";
+
+      // Optional: Clear the form
+      document.getElementById("pizzaForm").reset();
+    }
+
+    document.getElementById("orderBtn").addEventListener("click", placeOrder);
+  </script>
+
+</body>
+</html>

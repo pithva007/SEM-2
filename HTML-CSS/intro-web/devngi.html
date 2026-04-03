@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Sentence Generator</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 400px;
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 10px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Random Sentence Generator</h2>
+  <textarea id="output" readonly></textarea>
+
+  <script>
+    const articles = ["the", "a", "one", "some", "any"];
+    const nouns = ["boy", "girl", "dog", "town", "car"];
+    const verbs = ["drove", "jumped", "ran", "walked", "skipped"];
+    const prepositions = ["to", "from", "over", "under", "on"];
+
+    function getRandomWord(arr) {
+      return arr[Math.ceil(Math.random() * arr.length)];
+    }
+
+    function generateSentence() {
+      const sentence = [
+        getRandomWord(articles),
+        getRandomWord(nouns),
+        getRandomWord(verbs),
+        getRandomWord(prepositions),
+        getRandomWord(articles),
+        getRandomWord(nouns)
+      ].join(" ");
+      
+      // Capitalize first letter and add period
+      return sentence.charAt(0).toUpperCase() + sentence.slice(1) + ".";
+    }
+
+    function generateSentences(count) {
+      const sentences = [];
+      for (let i = 0; i < count; i++) {
+        sentences.push(generateSentence());
+      }
+      return sentences.join("\n");
+    }
+
+    document.getElementById("output").value = generateSentences(40);
+  </script>
+
+</body>
+</html>

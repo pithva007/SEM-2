@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Health Insurance Claim Form</title>
+</head>
+<body>
+  <h2 style="text-align:center;">HEALTH INSURANCE CLAIM FORM</h2>
+
+  <form>
+    <p><strong>Type of claim</strong><br>
+      <input type="checkbox" name="claim" value="Medicare"> Medicare
+      <input type="checkbox" name="claim" value="Medicaid"> Medicaid
+      <input type="checkbox" name="claim" value="Group Health Plan"> Group Health Plan
+      <input type="checkbox" name="claim" value="Other"> Other
+    </p>
+
+    <p><strong>Patient’S Name</strong><br>
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Middle Name">
+      <input type="text" placeholder="Last Name" required> *
+    </p>
+
+    <p><strong>Address</strong><br>
+      <textarea rows="3" cols="40" placeholder="Enter your present address, Consider
+Number of Rows: 3 and Columns: 40"></textarea>
+    </p>
+
+    <p><strong>Select State</strong> (With at-least three state name)<br>
+      <select>
+        <option>Select State</option>
+        <option>Gujarat</option>
+        <option>Maharashtra</option>
+        <option>Rajasthan</option>
+      </select>
+    </p>
+
+    <p><strong>Patient’s or Authorized Person’s Signature</strong><br>
+      <input type="file" accept="image/*"> Only accept image files
+    </p>
+
+    <button type="submit">Submit Form</button>
+
+    <p>* - Indicates required field</p>
+  </form>
+</body>
+</html>

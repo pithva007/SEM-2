@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        form {
+            padding: 20px;
+            margin: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+
+<form style="line-height: 24px; width: 600px;">
+    <fieldset style="border-radius: 4px;">
+        <legend>Student Registration Page</legend>
+
+        Student Admission Type:
+        <label><input type="radio" name="admissionType" value="12th_based" required> 12<sup>th</sup> based</label>
+        <label><input type="radio" name="admissionType" value="Diploma_based" required> Diploma based</label>
+        <b>#use Implicit label</b><br>
+
+        Name of Student:
+        <label><input type="radio" name="nameTitle" value="Mr"> Mr</label>
+        <label><input type="radio" name="nameTitle" value="Ms"> Ms</label>
+        
+        <input type="text" name="studentName" required >
+        <b>#Name contains only alphabet letters</b>
+        <br>
+
+        Complete Address: <b>#Use textarea and limit columns to 25 and number of rows to 2</b>
+        <textarea name="address" rows="2" cols="25" placeholder="flate/banglo apartment number name near landmark" required></textarea>
+        
+
+        City:
+        <input type="text" list="cities" required>
+        <b>#Use input tag list attribute</b>
+        <br>
+
+        State:
+        <select name="state" required>
+        
+                <option value="Punjab">Punjab</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Jammu">Jammu</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Kerala">Kerala</option>
+        </select>
+        <b>#Use select tag with option groups</b>
+        <hr style="border: 1px solid #000;">
+        <br>
+
+        Birth Date:
+        <input type="date" name="birthDate" required>
+        <b>#Birth age must be greater than equal 16 years</b>
+        <br>
+
+        <p>Birth Certificate:
+        <input type="file" name="birthCertificate" accept="image/*" required>
+        <b>#Only accept image files</b>
+        <br>
+
+        <hr style="border: 1px solid #000;">
+
+        Email:
+        <input type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@nirmauni\.ac\.in" required>
+        <b>#Valid email format: RollNumber@nirmauni.ac.in</b>
+        <br>
+
+        Mobile Number:
+        <input type="number" name="mobileNumber" min="1000000000" max="9999999999" pattern="\d{10}" required>
+        <b>#Length must be 10 digits</b>
+        <br>
+
+        <hr style="border: 1px solid #000;">
+        
+        Pincode:
+        <input type="number" name="pincode" min="100000" max="999999" pattern="\d{6}" required>
+        <b>#Pincode must be 6 digits</b>
+        <br>
+
+        <hr style="border: 1px solid #000;">
+
+        Password:
+        <input type="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" required>
+        <b>#Must contain at least one uppercase, one lowercase letter, one number, and 8 or more characters</b>
+        <br>
+
+        Confirm Password:
+        <input type="password" name="confirmPassword" required>
+        <b>#Password and Confirm Password must match</b>
+        <br>
+        <hr style="border: 1px solid #000;">
+
+        <button type="submit">Verify and SignUp</button>
+        <button type="reset">Reset the Form</button>
+    </fieldset>
+</form>
+
+</body>
+</html>

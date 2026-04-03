@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            background-color: #B99470;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4A2C2A;
+            margin-bottom: 20px;
+        }
+
+        table {
+            background-color: #FFEAC5;
+            border-collapse: collapse;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        td, tr {
+            padding: 15px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        button {
+            background-color: #4A2C2A;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="reset"] {
+            background-color: #6D4C41;
+        }
+
+        button:hover {
+            background-color: #3E2723;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #5D4037;
+        }
+
+        label {
+            font-weight: bold;
+            color: #4A2C2A;
+        }
+
+        .form-container {
+            background-color: #FFEAC5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form id="registrationform">
+            <table border="0">
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" placeholder="Enter your name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="number">Phone Number:</label></td>
+                    <td><input type="tel" id="number" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" placeholder="Enter your email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="pwd">Password:</label></td>
+                    <td><input type="password" id="pwd" placeholder="Enter your password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="add">Address:</label></td>
+                    <td><textarea id="add" placeholder="Enter your address" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="pin">Pincode:</label></td>
+                    <td><input type="tel" id="pin" placeholder="Enter your pincode" required></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                    <td><button type="reset">Reset</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registrationform").onsubmit = function (event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('number').value.trim();
+            const password = document.getElementById('pwd').value;
+            const pincode = document.getElementById('pin').value.trim();
+    
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                alert('Name should contain only alphabets!');
+                return;
+            }
+    
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Phone number must contain exactly 10 digits!');
+                return;
+            }
+    
+            const pinRegex = /^\d+$/;
+            if (!pinRegex.test(pincode)) {
+                alert('Pincode should contain only digits!');
+                return;
+            }
+    
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert('Password must contain:\n- At least 8 characters\n- One lowercase letter\n- One uppercase letter\n- One number\n- One special symbol');
+                return;
+            }
+    
+            alert("You are registered successfully!");
+            localStorage.setItem("isRegistered", "true");
+            
+            const pendingProduct = localStorage.getItem("pendingProduct");
+            if (pendingProduct) {
+                localStorage.removeItem("pendingProduct");
+                localStorage.setItem("selectedProduct", pendingProduct);
+                window.location.href = "cart-form.html";
+            } else {
+                window.location.href = "order.html";
+            }
+        };
+    </script>
+</body>
+</html>

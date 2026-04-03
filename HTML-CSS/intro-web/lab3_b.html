@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circle with Diamond Shape</title>
+    <style>
+        :root {
+            --color-primary: #f4d03f;
+            --color-red: #e74c3c;
+            --color-blue: #3498db;
+            --color-green: #2ecc71;
+            --color-purple: #9b59b6;
+            --color-red-hover: #c0392b;
+            --color-blue-hover: #2980b9;
+            --color-green-hover: #27ae60;
+            --color-purple-hover: #8e44ad;
+        }
+
+        .circle {
+            border: 1px solid #333;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            background-color: var(--color-primary);
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .curve1, .curve2, .curve3, .curve4 {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .curve1 {
+            background-color: var(--color-red);
+            border-radius: 200px 0 200px 0;
+            top: 0;
+            left: 0;
+        }
+
+        .curve2 {
+            background-color: var(--color-blue);
+            border-radius: 0 200px 0 200px;
+            top: 0;
+            right: 0;
+        }
+
+        .curve3 {
+            background-color: var(--color-green);
+            border-radius: 0 200px 0 200px;
+            bottom: 0;
+            left: 0;
+        }
+
+        .curve4 {
+            background-color: var(--color-purple);
+            border-radius: 200px 0 200px 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        .curve1:hover {
+            background-color: var(--color-red-hover);
+        }
+
+        .curve2:hover {
+            background-color: var(--color-blue-hover);
+        }
+
+        .curve3:hover {
+            background-color: var(--color-green-hover);
+        }
+
+        .curve4:hover {
+            background-color: var(--color-purple-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <div class="curve1"></div>
+        <div class="curve2"></div>
+        <div class="curve3"></div>
+        <div class="curve4"></div>
+    </div>
+</body>
+</html>

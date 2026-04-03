@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+    <fieldset>
+        <legend>Student Registration page</legend> <br>
+
+        <!-- Admission Type Radio -->
+        Student Admission Type: 
+        <input type="radio" name="admission" value="12">12<sup>th</sup>based 
+        <input type="radio" name="admission" value="diploma based">Diploma based
+        <br><br>
+
+        <!-- Name and Gender -->
+        Name of Student: 
+        Mr <input type="radio" name="gender" value="mr"> 
+        Ms <input type="radio" name="gender" value="ms"> 
+        <input type="text" id="name" name="name"><br><br>
+
+
+        <!-- Address and City -->
+        Complete Address:<br>
+        <textarea id="address" placeholder="Flat/Bunglow/Appartment Number,Name,Near landmark" cols="25" rows="2"></textarea> 
+        City: 
+        <input list="City" id="city" name="cityname">
+        <datalist id="City">
+            <option value="Rajkot"></option>
+            <option value="Ahemdabad"></option>
+            <option value="Surat"></option>
+        </datalist>
+        <br><br>
+
+        <!-- State Selection -->
+        State:
+        <select id="state">
+            <option value="">--Select State--</option>
+            <optgroup label="North State">
+                <option value="Punjab">Punjab</option>
+                <option value="Utrakhand">Utrakhand</option>
+                <option value="Rajashthan">Rajashthan</option>
+            </optgroup>
+            <optgroup label="South State">
+                <option value="karnataka">karnataka</option>
+                <option value="tamilnadu">tamilnadu</option>
+                <option value="telangana">telangana</option>
+            </optgroup>
+        </select>
+        <hr>
+
+        <!-- Birth Date -->
+        Birth Date: <input type="date" id="birthdate" name="birthdate" max="2008-12-31"><br><br>
+
+        <!-- File Upload -->
+        Birth Certificate Image File: <input type="file" id="imageFile" name="Image" accept="image/*">
+        <hr>
+
+        <!-- Email -->
+        Email: <input type="email" id="email" name="mail">
+        <br><br>
+
+        <!-- Mobile Number -->
+        Mobile number: <input type="tel" id="phone" name="phone" pattern=".{10}">
+        <hr>
+
+        <!-- Pincode -->
+        Pincode: <input type="number" id="pincode" name="pincode" min="100000" max="999999">
+        <hr>
+
+        <!-- Password -->
+        Password: <input type="password" id="password" name="password">
+        <br><br>
+        Confirm Password: <input type="password" id="confirmPassword" name="confirmPassword">
+        <hr>
+
+        <!-- Submit and Reset -->
+        <input type="submit" value="Verify and SignUp"> 
+        <input type="reset" value="Reset the form">
+    </fieldset>
+</form>
+
+<script>
+function validateForm() 
+{
+    // Admission Type validation
+    let admission = document.getElementsByName('admission');
+    let isAdmissionSelected = false;
+    for (let i = 0; i < admission.length; i++) {
+        if (admission[i].checked) {
+            isAdmissionSelected = true;
+            break;
+        }
+    }
+    if (!isAdmissionSelected) {
+        alert("Please select Admission Type!");
+        return false;
+    }
+
+    // Gender selection validation
+    let gender = document.getElementsByName('gender');
+    let isGenderSelected = false;
+    for (let i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+            isGenderSelected = true;
+            break;
+        }
+    }
+    if (!isGenderSelected) {
+        alert("Please select Gender!");
+        return false;
+    }
+
+    // Name validation
+    let name = document.getElementById("name").value.trim();
+    if (name === "") {
+        alert("Please enter the student's name.");
+        return false;
+    }
+
+    // Address validation
+    let address = document.getElementById("address").value.trim();
+    if (address === "") {
+        alert("Please enter your complete address.");
+        return false;
+    }
+
+    // City validation
+    let city = document.getElementById("city").value.trim();
+    if (city === "") {
+        alert("Please select or type a valid city.");
+        return false;
+    }
+
+    // State validation
+    let state = document.getElementById("state").value;
+    if (state === "") {
+        alert("Please select a state.");
+        return false;
+    }
+
+    // Birthdate validation
+    let birthdate = document.getElementById("birthdate").value;
+    if (birthdate === "") {
+        alert("Please select your birth date.");
+        return false;
+    }
+
+    // Image file validation
+    let imageFile = document.getElementById("imageFile").files.length;
+    if (imageFile === 0) {
+        alert("Please upload the Birth Certificate image file.");
+        return false;
+    }
+
+    // Email validation
+    let email = document.getElementById("email").value.trim();
+    if (email === "") {
+        alert("Please enter your email.");
+        return false;
+    } 
+    else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Invalid email format!");
+        return false;
+    }
+
+    // Phone number validation
+    let phone = document.getElementById("phone").value.trim();
+    if (phone.length !== 10 || isNaN(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return false;
+    }
+
+    // Pincode validation
+    let pincode = document.getElementById("pincode").value;
+    if (pincode < 100000 || pincode > 999999 || pincode === "") {
+        alert("Please enter a valid 6-digit pincode.");
+        return false;
+    }
+
+    // Password validation
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    let passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!passwordPattern.test(password)) {
+        alert("Password must be at least 8 characters, include uppercase, lowercase, and a digit.");
+        return false;
+    }
+
+    // Confirm Password Match
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>

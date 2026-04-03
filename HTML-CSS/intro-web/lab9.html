@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html ng-app="storeApp">
+<head>
+    <title>Departmental Store Registration</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-container, .bill-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .item-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .item-name {
+            flex: 2;
+        }
+        .item-price {
+            flex: 1;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .item-quantity {
+            flex: 1;
+        }
+        .bill-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bill-table th, .bill-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .bill-table th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="StoreController as store">
+        <h1>Departmental Store Customer Registration</h1>
+        
+        <div class="form-container" ng-hide="store.submitted">
+            <h2>Customer Information</h2>
+            <form name="customerForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" ng-model="store.customer.name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">Contact Number:</label>
+                    <input type="tel" id="contact" ng-model="store.customer.contact" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <label><input type="radio" ng-model="store.customer.gender" value="Male"> Male</label>
+                    <label><input type="radio" ng-model="store.customer.gender" value="Female"> Female</label>
+                    <label><input type="radio" ng-model="store.customer.gender" value="Other"> Other</label>
+                </div>
+                
+                <div class="form-group">
+                    <label>Favorite Items:</label>
+                    <br>
+                    <div ng-repeat="item in store.items" class="item-row">
+                        <div class="item-name">
+                            <input type="checkbox" ng-model="item.selected" id="item-{{$index}}">
+                            <label for="item-{{$index}}">{{item.name}}</label>
+                        </div>
+                        <div class="item-price">₹{{item.price}}</div>
+                        <div class="item-quantity">
+                            <input type="number" ng-model="item.quantity" min="1" ng-disabled="!item.selected" style="width: 60px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="suggestions">Suggestions/Feedback:</label>
+                    <textarea id="suggestions" ng-model="store.customer.suggestions" rows="3"></textarea>
+                </div>
+                
+                <button type="button" ng-click="store.submitForm()" ng-disabled="!customerForm.$valid">Generate Bill</button>
+            </form>
+        </div>
+        
+        <div class="bill-container" ng-show="store.submitted">
+            <h2>Customer Bill</h2>
+            <h3>{{store.customer.name}} ({{store.customer.contact}})</h3>
+            <p>Gender: {{store.customer.gender}}</p>
+            
+            <table class="bill-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in store.items" ng-if="item.selected">
+                        <td>{{item.name}}</td>
+                        <td>₹{{item.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>₹{{item.price * item.quantity}}</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">Total</td>
+                        <td>₹{{store.getTotalAmount()}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div ng-if="store.customer.suggestions">
+                <h3>Customer Suggestions:</h3>
+                <p>{{store.customer.suggestions}}</p>
+            </div>
+            
+            <button type="button" ng-click="store.resetForm()">New Registration</button>
+        </div>
+    </div>
+
+    <script>
+        angular.module('storeApp', [])
+            .controller('StoreController', function() {
+                var vm = this;
+                
+                // Initialize customer object
+                vm.customer = {
+                    name: '',
+                    contact: '',
+                    gender: 'Male',
+                    suggestions: ''
+                };
+                
+                // Store items with prices
+                vm.items = [
+                    { name: 'Rice (1kg)', price: 50, selected: false, quantity: 1 },
+                    { name: 'Wheat Flour (1kg)', price: 30, selected: false, quantity: 1 },
+                    { name: 'Sugar (1kg)', price: 40, selected: false, quantity: 1 },
+                    { name: 'Tea Powder (250g)', price: 80, selected: false, quantity: 1 },
+                    { name: 'Coffee Powder (250g)', price: 120, selected: false, quantity: 1 },
+                    { name: 'Milk (1L)', price: 50, selected: false, quantity: 1 },
+                    { name: 'Biscuits (100g)', price: 20, selected: false, quantity: 1 },
+                    { name: 'Soap (100g)', price: 35, selected: false, quantity: 1 }
+                ];
+                
+                vm.submitted = false;
+                
+                // Calculate total amount
+                vm.getTotalAmount = function() {
+                    var total = 0;
+                    angular.forEach(vm.items, function(item) {
+                        if (item.selected) {
+                            total += item.price * item.quantity;
+                        }
+                    });
+                    return total;
+                };
+                
+                // Submit form
+                vm.submitForm = function() {
+                    vm.submitted = true;
+                };
+                
+                // Reset form
+                vm.resetForm = function() {
+                    vm.customer = {
+                        name: '',
+                        contact: '',
+                        gender: 'Male',
+                        suggestions: ''
+                    };
+                    
+                    angular.forEach(vm.items, function(item) {
+                        item.selected = false;
+                        item.quantity = 1;
+                    });
+                    
+                    vm.submitted = false;
+                };
+            });
+    </script>
+</body>
+</html>

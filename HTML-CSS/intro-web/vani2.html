@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common & Unique Elements</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+    .red {
+      background-color: red;
+      color: white;
+    }
+    .green {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Common & Unique Elements</h2>
+
+<label>Common Elements (in all 3 arrays)</label>
+<input type="text" id="common" >
+
+<label>Unique Elements (only in one array)</label>
+<input type="text" id="unique" >
+
+<button onclick="analyzeArrays()">Analyze</button>
+
+<script>
+function analyzeArrays() {
+  // Hardcoded simple arrays
+  var arr1 = ["1", "2", "3", "4"];
+  var arr2 = ["2", "3", "5"];
+  var arr3 = ["3", "6", "7"];
+
+  var all = arr1.concat(arr2).concat(arr3);
+
+  var freq = {};
+  for (var i = 0; i < all.length; i++) {
+    var val = all[i];
+    if (freq[val]) {
+      freq[val]++;
+    } else {
+      freq[val] = 1;
+    }
+  }
+
+  var common = [];
+  var unique = [];
+
+  for (var key in freq) {
+    if (arr1.includes(key) && arr2.includes(key) && arr3.includes(key)) {
+      common.push(key);
+    }
+    if (freq[key] === 1) {
+      unique.push(key);
+    }
+  }
+
+  // Display results
+  document.getElementById("common").value = common.join(", ");
+  document.getElementById("unique").value = unique.join(", ");
+
+  // Apply background color based on content
+  var commonField = document.getElementById("common");
+  var uniqueField = document.getElementById("unique");
+
+// For Common
+if (common.length === 0) {
+  commonField.style.backgroundColor = "red";
+} else {
+  commonField.style.backgroundColor = "green";
+}
+
+// For Unique
+if (unique.length === 0) {
+  uniqueField.style.backgroundColor = "red";
+} else {
+  uniqueField.style.backgroundColor = "green";
+}
+
+}
+</script>
+
+</body>
+</html>

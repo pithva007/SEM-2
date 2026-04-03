@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F5E6D3, #EAD1C0);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #6F4E37;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            border: 2px solid #E6D5C3;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #6F4E37;
+            font-weight: 600;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #E6D5C3;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #CC5500;
+            box-shadow: 0 0 10px rgba(204, 85, 0, 0.3);
+        }
+
+        #product {
+            background: #F8F1E9;
+            cursor: not-allowed;
+            color: #6F4E37;
+            font-weight: 500;
+        }
+
+        button {
+            background: linear-gradient(135deg, #CC5500, #B34A00);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(204, 85, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #B34A00, #9C3E00);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(204, 85, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <h1>Fill Cart Details</h1>
+    <form id="cartForm">
+        <label for="product">Product Name:</label>
+        <input type="text" id="product" name="product" readonly><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required><br>
+        <button type="submit">Confirm Order</button>
+    </form>
+
+    <script>
+        window.onload = function () {
+            const product = localStorage.getItem("selectedProduct");
+            if (!product) {
+                alert("No product selected! Redirecting to products page.");
+                window.location.href = "order.html";
+                return;
+            }
+            document.getElementById("product").value = product;
+        };
+
+        document.getElementById("cartForm").onsubmit = function (event) {
+            event.preventDefault();
+            const quantity = document.getElementById("quantity").value;
+            if (confirm(`Are you sure you want to place the order?\nProduct: ${localStorage.getItem("selectedProduct")}\nQuantity: ${quantity}`)) {
+                alert("Order placed successfully!");
+                window.location.href = "index.html";
+            }
+        };
+    </script>
+</body>
+</html>

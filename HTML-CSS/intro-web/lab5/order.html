@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products</title>
+    <link rel="stylesheet" href="design.css">
+   
+<script>
+    function addToCart(productName) {
+        if (localStorage.getItem("isRegistered") !== "true") {
+            const shouldRegister = confirm("You need to register first. Click OK to register.");
+            if (shouldRegister) {
+                localStorage.setItem("pendingProduct", productName);
+                window.location.href = "register.html";
+            }
+            return; 
+        }
+        
+        localStorage.setItem("selectedProduct", productName);
+        window.location.href = "cart-form.html";
+    }
+</script>
+</head>
+<body>
+    <h1>Our Special Products</h1>
+    <section class="products">
+        <div class="product-grid">
+            <div class="product"><img src="images/burger-frenchfries.png" alt="Burger & Fries"><p>$15</p><button onclick="addToCart('Burger & Fries')">Add to Cart</button></div>
+            <div class="product"><img src="images/cold-beverages.png" alt="Cold Beverage"><p>$10</p><button onclick="addToCart('Cold Beverage')">Add to Cart</button></div>
+            <div class="product"><img src="images/desserts.png" alt="Desserts"><p>$20</p><button onclick="addToCart('Desserts')">Add to Cart</button></div>
+            <div class="product"><img src="images/hot-beverages.png" alt="Hot Beverage"><p>$10</p><button onclick="addToCart('Hot Beverage')">Add to Cart</button></div>
+            <div class="product"><img src="images/refreshment.png" alt="Refreshment"><p>$6</p><button onclick="addToCart('Refreshment')">Add to Cart</button></div>
+            <div class="product"><img src="images/special-combo.png" alt="Special Combo"><p>$15</p><button onclick="addToCart('Special Combo')">Add to Cart</button></div>
+        </div>
+    </section>
+</body>
+</html>

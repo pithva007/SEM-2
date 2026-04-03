@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+    <fieldset>
+        <legend>Sign In Form</legend>
+
+        <!-- Address -->
+        <label for="address">Complete Address:</label><br>
+        <textarea id="address" placeholder="Flat/Bunglow/Appartment Number, Name, Near landmark" cols="25" rows="2" required></textarea><br><br>
+
+        <!-- City -->
+        <label for="city">City:</label>
+        <input list="City" id="city" name="cityname" required>
+        <datalist id="City">
+            <option value="Rajkot"></option>
+            <option value="Ahmedabad"></option>
+            <option value="Surat"></option>
+        </datalist>
+        <br><br>
+
+        <!-- State Selection -->
+        <label for="state">State:</label>
+        <select id="state" required>
+            <option value="">--Select State--</option>
+            <optgroup label="North State">
+                <option value="Punjab">Punjab</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="Rajasthan">Rajasthan</option>
+            </optgroup>
+            <optgroup label="South State">
+                <option value="Karnataka">Karnataka</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+            </optgroup>
+        </select>
+        <br><br>
+
+        <!-- Birth Date -->
+        <label for="birthdate">Birth Date:</label>
+        <input type="date" id="birthdate" name="birthdate" max="2008-12-31" required><br><br>
+
+        <!-- File Upload -->
+        <label for="imageFile">Upload Image File:</label>
+        <input type="file" id="imageFile" name="image" accept="image/*" required><br><br>
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="mail" required><br><br>
+
+        <!-- Mobile Number -->
+        <label for="phone">Mobile Number:</label>
+        <input type="tel" id="phone" name="phone" pattern=".{10}" required><br><br>
+
+        <!-- Pincode -->
+        <label for="pincode">Pincode:</label>
+        <input type="number" id="pincode" name="pincode" min="100000" max="999999" required><br><br>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+
+        <!-- Submit and Reset -->
+        <input type="submit" value="Verify and Sign Up"> 
+        <input type="reset" value="Reset Form">
+    </fieldset>
+</form>
+
+<script src="js/script.js"></script>
+</body>
+</html>

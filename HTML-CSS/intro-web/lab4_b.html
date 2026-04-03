@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Arrays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #36e5bf70;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Merge Arrays</h2>
+        <input type="text" id="array1" placeholder="Enter first array (comma-separated)">
+        <input type="text" id="array2" placeholder="Enter second array (comma-separated)">
+        <button onclick="mergeArrays()">Merge</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function mergeArrays() {
+        let arr1 = document.getElementById("array1").value.split(',')
+            .map(item => item.trim()).filter(item => item !== "");
+        let arr2 = document.getElementById("array2").value.split(',')
+            .map(item => item.trim()).filter(item => item !== "");
+
+        if (arr1.length === 0 && arr2.length === 0) {
+            document.getElementById("result").innerText = "Please enter valid input!";
+            return;
+        }
+
+        let mergedArray = []; 
+
+        let combinedArray = arr1.concat(arr2);
+        
+        for (let i = 0; i < combinedArray.length; i++) {
+            let isDuplicate = false;
+            
+            for (let j = 0; j < mergedArray.length; j++) {
+                if (combinedArray[i] === mergedArray[j]) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            
+            if (!isDuplicate) {
+                mergedArray.push(combinedArray[i]);
+            }
+        }
+
+        document.getElementById("result").innerText = "Merged Array: [" + mergedArray.join(', ') + "]";
+}
+
+    </script>
+</body>
+</html>

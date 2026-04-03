@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration : none;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    background : none;
+}
+
+h1{
+    font-family: "Miniver",sans-serif;
+    color:#cc5500;
+    font-size: x-large;
+    
+}
+img{
+    height:460px;
+    width:450px;
+}
+
+.section-content{
+    margin:0 auto;
+    padding: 0 20px;
+}
+
+header{
+    position: fixed;
+    width:100%;
+    z-index: 5;
+    background-color: #3b141c;
+}
+
+header .navbar{
+    display: flex;
+    padding:30px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.navbar .nav-logo .logo-text {
+    color: white ;
+    font-size:x-large;
+    font-weight: bolder;
+}
+
+.navbar .nav-menu{
+    display: flex;
+    gap:10px;
+}
+
+.navbar .nav-menu .nav-link{
+    padding: 10px 18px ;
+    font-size: small;
+    color : white;
+    border-radius: 50px;
+    transition : 1s ease;
+}
+
+.navbar .nav-menu .nav-link:hover{
+    background-color: #cc5500;
+}
+
+.hero-section{
+    min-height: 100vh;
+    background-color: #3b141c;
+}
+
+.hero-section .section-content{
+    display:flex;
+    align-items:center;
+    min-height: 100vh;
+    color:white;
+    justify-content: space-between;
+}
+
+.hero-section .hero-details .title{
+    font-size: xxl;
+    color: #cc5500;
+    font-family: "Miniver",sans-serif;
+}
+
+.hero-section .hero-details .subtitle{
+    margin-top:8px;
+    max-width: 70%;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.hero-section .hero-details .description{
+    max-width: 70%;
+    margin:24px 0 40px;
+    font-size: medium;
+}
+
+.hero-section .hero-details .buttons{
+    display:flex;
+    gap:23px;
+
+}
+
+
+.hero-section .hero-details .button{
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color:#3b141c;
+    border-radius: 50px;
+    background-color:#cc5500;
+    font-weight: normal;
+    transition: 0.3s ease;
+}
+
+.hero-section .hero-details .button:hover{
+    color: white;
+    border-color: white;
+    background: transparent;
+}
+.hero-section .hero-image-wrapper{
+    max-width: 500px;
+    margin-right: 30px;
+
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.products{
+    background-color: burlywood;
+}
+
+.product {
+    background: beige;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3b141c;
+}
+
+.product button{
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color:#3b141c;
+    border-radius: 50px;
+    background-color:#cc5500;
+    font-weight: normal;
+    transition: 0.3s ease;
+}
+
+.product button:hover{
+    color: brown;
+    border-color: brown;
+    background: transparent;
+}
+/* Additional Enhancements */
+body {
+    background: linear-gradient(135deg, #F5E6D3, #EAD1C0);
+}
+
+form:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+
+input {
+    background: #fff;
+}
+
+input:focus {
+    box-shadow: 0 0 10px rgba(204, 85, 0, 0.3);
+}
+
+button {
+    background: linear-gradient(135deg, #CC5500, #B34A00);
+    box-shadow: 0 5px 15px rgba(204, 85, 0, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #B34A00, #9C3E00);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(204, 85, 0, 0.4);
+}
+
+/* Smooth transition on focus and hover */
+input, button {
+    transition: all 0.3s ease-in-out;
+}

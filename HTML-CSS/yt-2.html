@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube.com Clone-2</title>
+    <link rel="icon" href="images.webp">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="styl/general.css">
+    <link rel="stylesheet" href="styl/header.css">
+    <link rel="stylesheet" href="styl/video-prev.css">
+    <link rel="stylesheet" href="styl/sidebar.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="left-sec">
+            <img class="hamburger-menu" src="icons/hamburger-menu.svg" alt="Menu">
+            <img class="youtube-logo" src="icons/youtube-logo.svg" alt="YouTube Logo">
+        </div>
+        <div class="mid-sec">
+            <input class="search-bar" type="text" placeholder="Search YouTube">
+            <button class="search-button">
+                <img class="search-icon" src="icons/search.svg" alt="Search Icon">
+            </button>
+            <button class="voice-button" aria-label="Voice Search">
+                <img class="voice-search-icon" src="icons/voice-search-icon.svg" alt="Voice Search">
+            </button>
+        </div>
+        <div class="right-sec">
+            <img class="upload-icon" src="icons/upload.svg" alt="Upload">
+            <img class="apps-icon" src="icons/youtube-apps.svg" alt="Apps">
+            <div class="noti-cont">
+                <img class="noti-icon" src="icons/notifications.svg" alt="Notifications">
+                <div class="noti-number" aria-label="Notification Count">9+</div>
+            </div>
+            <a href="https://www.youtube.com/@khushpithva3168" aria-label="My Channel">
+                <img class="my-channel-icon" src="icons/unnamed.jpg" alt="Channel Profile">
+            </a>
+        </div>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <div class="sidebar-link">
+            <img src="icons/home.svg" alt="Home Icon">
+            <div>Home</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icons/explore.svg" alt="Explore Icon">
+            <div>Explore</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icons/subscriptions.svg" alt="Subscriptions Icon">
+            <div>Subscriptions</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icons/originals.svg" alt="Originals Icon">
+            <div>Originals</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icons/youtube-music.svg" alt="YouTube Music Icon">
+            <div>YouTube Music</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icons/library.svg" alt="Library Icon">
+            <div>Library</div>
+        </div>
+    </div>
+
+    <!-- Video Grid Section -->
+    <div class="video-grid">
+        <!-- Video Preview Template -->
+        <div class="video-prev">
+            <a href="https://www.youtube.com/watch?v=n2RNcPRtAiY">
+                <div class="thumbnail-row">
+                    <img class="thumbnail" src="thumbnails/thumbnail-1.webp" alt="Tech and AI with Sundar Pichai">
+                    <div class="video-time">14:20</div>
+                </div>
+            </a>
+            <div class="video-info-grid">
+                <a href="https://www.youtube.com/c/mkbhd">
+                    <div class="channel-picture">
+                        <img class="profile-picture" src="channel/channel-1.jpeg" alt="MKBHD">
+                    </div>
+                </a>
+                <div class="video-info">
+                    <p class="video-title"><a href="https://www.youtube.com/watch?v=n2RNcPRtAiY">Tech and AI with Google CEO Sundar Pichai!</a></p>
+                    <p class="video-author"><a href="https://www.youtube.com/c/mkbhd">MKBHD</a></p>
+                    <p class="video-state">3.4M views &#183; 6 months ago</p>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat video-prev blocks for other videos as needed -->
+    </div>
+</body>
+</html>

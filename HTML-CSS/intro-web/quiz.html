@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Knowledge Quiz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: auto;
+            text-align: left;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $(document).on("contextmenu", function(e) {
+                e.preventDefault();
+            });
+            $(document).on("keydown", function(e) {
+                if (e.ctrlKey || e.key === "F12") {
+                    e.preventDefault();
+                }
+            });
+            $(document).on("selectstart", function(e) {
+                e.preventDefault();
+            });
+
+            $("#submitQuiz").click(function() {
+                let correctAnswers = {
+                    "question1": "a", 
+                    "question2": "c", 
+                    "question3": "b", 
+                    "question4": "d", 
+                    "question5": "a"
+                };
+                let score = 0;
+                let total = Object.keys(correctAnswers).length;
+
+                $.each(correctAnswers, function(question, answer) {
+                    let selectedAnswer = $(`input[name="${question}"]:checked`).val();
+                    if (selectedAnswer === answer) {
+                        score++;
+                    }
+                });
+                
+                alert(`You scored ${score} out of ${total}`);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>General Knowledge Quiz</h2>
+        
+        <div class="question">1. Which country drinks the most coffee per capita?</div>
+        <div class="options">
+            <label><input type="radio" name="question1" value="a"> Finland</label>
+            <label><input type="radio" name="question1" value="b"> USA</label>
+            <label><input type="radio" name="question1" value="c"> Brazil</label>
+            <label><input type="radio" name="question1" value="d"> Italy</label>
+        </div>
+        
+        <div class="question">2. How many measures of Gordon’s Gin are in a Vesper (James Bond) martini?</div>
+        <div class="options">
+            <label><input type="radio" name="question2" value="a"> 2</label>
+            <label><input type="radio" name="question2" value="b"> 1</label>
+            <label><input type="radio" name="question2" value="c"> 3</label>
+            <label><input type="radio" name="question2" value="d"> 4</label>
+        </div>
+        
+        <div class="question">3. Cacio e pepe is a staple of what Italian city’s cuisine?</div>
+        <div class="options">
+            <label><input type="radio" name="question3" value="a"> Milan</label>
+            <label><input type="radio" name="question3" value="b"> Rome</label>
+            <label><input type="radio" name="question3" value="c"> Venice</label>
+            <label><input type="radio" name="question3" value="d"> Florence</label>
+        </div>
+        
+        <div class="question">4. Where did sushi originate?</div>
+        <div class="options">
+            <label><input type="radio" name="question4" value="a"> China</label>
+            <label><input type="radio" name="question4" value="b"> Korea</label>
+            <label><input type="radio" name="question4" value="c"> Thailand</label>
+            <label><input type="radio" name="question4" value="d"> Japan</label>
+        </div>
+
+        <div class="question">5. What is a Beaujolais?</div>
+        <div class="options">
+            <label><input type="radio" name="question5" value="a"> A type of red wine</label>
+            <label><input type="radio" name="question5" value="b"> A type of cheese</label>
+            <label><input type="radio" name="question5" value="c"> A French dish</label>
+            <label><input type="radio" name="question5" value="d"> A cocktail</label>
+        </div>
+        
+        <div class="btn-container">
+            <button id="submitQuiz">Submit Quiz</button>
+        </div>
+    </div>
+</body>
+</html>
