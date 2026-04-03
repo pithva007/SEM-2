@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        // const product = {
+        //     name: 'socks',
+        //     price : 1090,
+        //     ['time-to-deliver']: 10
+        // };
+        // console.log(product);
+        // console.log(product.price);
+        // product.name='khush pithva';
+        // console.log(product)
+      
+        // const product2 = {
+        //     name: 'socks',
+        //     price : 1090,
+        //     ['time-to-deliver']: 10,
+        //     rating:{
+        //         star:4.5,
+        //         count:87,
+        //     },
+        //     fun:function fun1()
+        //     {
+        //         console.log('Output of function inside function ');
+        //     }
+        // };
+        // console.log(product2.rating.count);
+        // console.log(product2.rating.star);
+        // product2.fun();
+
+        // console.log(typeof  JSON.stringify(product2));
+        // const jsonString = JSON.stringify(product2);
+        // console.log(JSON.parse(jsonString));
+
+        console.log('Khush'.length);
+        console.log('khush'.toUpperCase());
+        console.log('KHUSH'.toLowerCase());
+        const object1= {
+            message: 'Yellow'
+        };
+        // we can not change the value of const but by object we can
+        // in this method object2 has a reference of object1 so change is possible 
+        const object2=object1;
+        object1.message='Yellow';
+        console.log(object1);
+
+        const object3={
+            message : 'Yellow'
+        };
+
+        console.log(object3==object1)
+        //it gives answer false because it is at different reference so the ref values has been diffrent so... 
+        console.log(object1===object2)
+        // its give true caus they both have same ref values
+         
+        const object4={
+            message : 'Yellow',
+            price : 999
+        };
+        // const message=object4.message;
+        const{ message , price}=object4;
+        console.log(message); 
+        console.log(price); 
+
+        const object5={
+            //message:message
+            message,
+            // mehtod : function funstion1{
+            //     console.log('greate');
+            // }
+            method(){
+                console.log('greate');
+             }
+        };
+
+        console.log(object5);
+        object5.method();
+
+    </script>
+</body>
+</html> 

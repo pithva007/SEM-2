@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM-Projects</title>
+    <style>
+
+        body{
+            font-family:arial;
+        }
+
+        .subs-button{
+            border: none;
+            background-color: black;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: medium;
+            cursor: pointer;
+            margin-bottom: 50px;
+        }
+
+        .is-Subscribed{
+            border: none;
+            background-color: rgb(240, 240, 240);
+            color: black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: medium;
+            cursor: pointer;
+        }
+
+        .cost-input{
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .calculate-total{
+            background-color: rgb(16, 173, 16);
+            color: white;
+            padding: 11px 15px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="Subscribe()" class="subs subs-button ">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Order under $40 = +$10 shipping.</p>
+    <p>Order Over $40 = Free Shipping.</p>
+
+    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="handlekey(event)">
+    <button onclick="calculateTotal();" class="calculate-total">Calculate</button> 
+    <p class="js-total-cost"></p>
+
+    <script>
+
+		console.log(Number('25'- 5));
+
+        function handlekey(event) {
+            console.log(event.key);
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+												
+        function calculateTotal() {
+            const TotalCost = document.querySelector('.js-cost-input');   
+            let cost = Number(TotalCost.value);
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+            console.log(cost);
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+        }
+
+        function Subscribe() {
+            const buttonElement = document.querySelector('.subs');
+            if (buttonElement.innerHTML === 'Subscribe') {
+                buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('is-Subscribed'); 
+            } else {
+                buttonElement.innerHTML = 'Subscribe';             buttonElement.classList.remove('is-Subscribed'); 
+
+            }
+        }
+    </script>
+</body>
+</html>
