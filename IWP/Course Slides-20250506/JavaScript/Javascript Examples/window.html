@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!-- Fig. 12.13: window.html    -->
+<!-- Using the Window Object  -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using the Window Object</title>
+
+<script type = "text/javascript">
+   <!--
+   var childWindow; // variable to control the child window
+
+   function createChildWindow()
+   {
+      // these variables all contain either "yes" or "no"
+      // to enable or disable a feature in the child window
+      var toolBar // specify if toolbar will appear in child window
+      var menuBar; // specify if menubar will appear in child window
+      var location; // specify if address bar will appear in child window
+      var scrollBars; // specify if scrollbars will appear in child window
+      var status; // specify if satus bar will appear in child window
+      var resizable; // specify if the child window will be resizable
+   
+      // determine whether the Tool Bar checkbox is checked
+      if ( toolBarCheckBox.checked )
+         toolBar = "yes";
+      else
+         toolBar = "no";
+
+      // determine whether the Menu Bar checkbox is checked
+      if ( menuBarCheckBox.checked )
+         menuBar = "yes";
+      else
+         menuBar = "no";
+
+      // determine whether the Address Bar checkbox is checked
+      if ( locationCheckBox.checked )
+         location = "yes";
+      else
+         location = "no";
+   
+      // determine whether the Scroll Bar checkbox is checked
+      if ( scrollBarsCheckBox.checked )
+         scrollBars = "yes";
+      else
+         scrollBars = "no";
+   
+      // determine whether the Status Bar checkbox is checked
+      if ( statusCheckBox.checked )
+         status = "yes";
+      else
+         status = "no";
+   
+      // determine whether the Resizable checkbox is checked
+      if ( resizableCheckBox.checked )
+         resizable = "yes";
+      else
+         resizable = "no";
+
+      //display window with selected features
+      childWindow = window.open( "", "", "resizable = " + resizable +
+         ",toolbar = " + toolBar + ",menubar = " + menuBar +
+         ",status = " + status + ",location = " + location +
+         ",scrollbars = " + scrollBars );
+	  
+      // disable buttons
+      closeButton.disabled = false;
+      modifyButton.disabled = false;
+      getURLButton.disabled = false;
+      setURLButton.disabled = false;
+   } // end function createChildWindow
+
+   // insert text from the textbox in the child window 
+   function modifyChildWindow()
+   {
+      if ( childWindow.closed )
+         alert( "You attempted to interact with a closed window" );
+      else
+         childWindow.document.write( textForChild.value );
+   } // end function modifyChildWindow
+
+   // close the child window
+   function closeChildWindow()
+   {
+      if ( childWindow.closed )
+         alert( "You attempted to interact with a closed window" );
+      else
+         childWindow.close();
+
+      closeButton.disabled = true;
+      modifyButton.disabled = true;
+      getURLButton.disabled = true;
+      setURLButton.disabled = true;
+   } // end function closeChildWindow
+
+   // copy the URL of the child window into the parent window’s myChildURL
+   function getChildWindowURL()
+   {
+      if ( childWindow.closed )
+         alert( "You attempted to interact with a closed window" );
+      else
+         myChildURL.value = childWindow.location;
+   } // end function getChildWindowURL
+
+   // set the URL of the child window to the URL
+   // in the parent window’s myChildURL
+   function setChildWindowURL()
+   {
+      if ( childWindow.closed )
+         alert( "You attempted to interact with a closed window" );
+      else
+         childWindow.location = myChildURL.value;
+   } // end function setChildWindowURL
+   //-->
+</script>
+
+</head>
+
+<body>
+<h1>Hello, This is the main window</h1>
+<p>Please check the features to enable for the child window<br/>
+   <input id = "toolBarCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Tool Bar</label>
+   <input id = "menuBarCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Menu Bar</label>
+   <input id = "locationCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Address Bar</label><br/>
+   <input id = "scrollBarsCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Scroll Bars</label>
+   <input id = "statusCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Status Bar</label>
+   <input id = "resizableCheckBox" type = "checkbox" value = ""
+      checked = "checked" />
+      <label>Resizable</label><br/></p>
+
+<p>Please enter the text that you would like to display
+   in the child window<br/>
+   <input id = "textForChild" type = "text"
+      value = "<h1> Hello, I am a child window</h1> <br\>"/>
+   <input id = "createButton" type = "button"
+      value = "Create Child Window" onclick = "createChildWindow()" />
+   <input id= "modifyButton" type = "button" value = "Modify Child Window"
+      onclick = "modifyChildWindow()" disabled = "disabled"/>
+   <input id = "closeButton" type = "button" value = "Close Child Window"
+      onclick = "closeChildWindow()" disabled = "disabled"/></p>
+
+<p>The other window's URL is: <br/>
+   <input id = "myChildURL" type = "text" value = "./"/>
+   <input id = "setURLButton" type = "button" value = "Set Child URL"
+      onclick = "setChildWindowURL()" disabled = "disabled"/>
+   <input id = "getURLButton" type = "button" value = "Get URL From Child"
+      onclick = "getChildWindowURL()" disabled = "disabled"/></p>
+   
+</body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2004 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

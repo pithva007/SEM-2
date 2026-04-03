@@ -1,0 +1,61 @@
+<html>
+<head>
+<style>
+#a,#b,#c {
+	height:150px;
+	width:150px;
+	background-color:black;
+	color:white;
+	border-radius:30px;
+}
+#aa,#bb {
+	height:150px;
+	width:20px;
+	background-color:white;
+	color:black;
+}
+#xa,#xb,#xc {
+	margin-left:auto;	
+	margin-right:auto;	
+	text-align:center;
+	color:white;
+	font-size:+45;
+}
+#xaa,#xbb {
+	margin-left:auto;	
+	margin-right:auto;
+	text-align:center;
+	color:black;
+	font-size:+45;
+}
+.parent{
+	position: relative;
+}
+</style>
+<script>
+var x;
+var y,h,m,s;
+function startdate(){
+ x=Date().split(" ");
+ y=x[4].split(":");
+ h=y[0];
+ m=y[1];
+ s=y[2];
+ document.getElementById('xa').innerHTML=h;
+ document.getElementById('xb').innerHTML=m;
+ document.getElementById('xc').innerHTML=s;
+
+}
+setInterval(startdate,1000);
+</script>
+</head>
+<body onload="startdate()">
+<div style="width:800px; margin:0 auto;">
+<div id="a" style="float:left"><p id="xa">a</p></div>
+<div id="aa" style="float:left"><p id="xaa">:</p></div>
+<div id="b" style="float:left"><p id="xb">a</p></div>
+<div id="bb" style="float:left"><p id="xbb">:</p></div>
+<div id="c" style="float:left"><p id="xc">a</p></div>
+</div>
+</body>
+</html>

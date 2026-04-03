@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+	</script>
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js">
+	</script>
+	<style>
+		div {
+			width: 300px;
+			border: solid 1px black;
+			border-radius: 5px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<h2 style="color: green">GeeksforGeeks</h2>
+	<p>
+		<input type="button" id="btn1" value="Animate" />
+	</p>
+	<div id="div">Animate Colors</div>
+	<script>
+		let animate = true;
+		$("#btn1").click(function () {
+
+			// Changing the background color alongwith
+			// changing width of the div tag
+			if (animate)
+				$("#div").animate({
+					"background-color": "red",
+					width: "200px"
+				}, 800);
+			else
+				$("#div").animate(
+					{
+						"background-color": "green",
+						width: "300px"
+					},
+					800
+				);
+
+			animate = !animate;
+		});
+	</script>
+</body>
+</html>

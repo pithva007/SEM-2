@@ -1,0 +1,78 @@
+<html>
+<body>
+
+<form name="input" action="html_form_action.asp" method="post" 
+enctype="multipart/form-data">
+First Name: <input type="text" name="firstname" value="gfgfgffhfh" maxlength="5"><br/>
+Last Name: <input type="text" name="lastname"><br/>
+
+Password:  <input type="password" name="Pass" value="" size="30"> <br> <br>
+
+Gender:<br>
+Male:  <input type="radio" name="gender" value="male"  > <br>
+Female: <input type="radio" name="gender" value="female" checked> <br><br>
+
+Married: <br>
+Yes:  <input type="radio" name="mstatus" value="yes"> <br>
+No: <input type="radio" name="mstatus" value="no" checked> <br> <br>
+
+Vehicles:<br>
+I have a bike: <input type="checkbox" name="vehicle" value="Bike"> <br>
+I have a car: <input type="checkbox" name="vehicle" value="Car" checked="checked"> <br>
+I have an airplane: <input type="checkbox" name="vehicle" value="Airplane"> <br> <br>
+
+Select Cars:
+<select name="cars">
+<option value="volvo">Volvo</option>
+<option value="saab" selected>Saab</option>
+<option value="fiat">Fiat</option>
+<option >Audi</option>
+</select> <br> <br>
+
+Select Cars (with selected attribute):
+<select name="cars1" multiple="multiple" size="2">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat" selected="selected">Fiat</option>
+<option >Audi</option>
+</select> <br> <br>
+
+State:
+<select name="state">
+	<optgroup label="North">
+		<option> North State 1
+		<option> North State 2
+	</optgroup>
+	<optgroup label="South">
+		<option> South State 1
+		<option> South State 2
+	</optgroup>
+</select>
+<br>
+Write your address here: <br>
+<textarea rows="5" cols="20">
+Enter your address
+</textarea> <br><br>
+<br>
+<textarea rows="5" cols="20">
+Enter your present address
+</textarea> <br><br>
+
+Your Image: <input type="file" name="img_file" accept="image/*"> <br>
+
+<input type="submit">
+<input type="submit" value="Submit">
+<input type="submit" value="Cancel"><br>
+
+<input type="reset">
+<input type="reset" value="Use Defaults"> <br>
+
+<input type="button" value="Push Button" name="pushbutton">
+
+<input type="image" src="smiley.gif" align="top" name="smiley1">
+
+
+</form>
+
+</body>
+</html>

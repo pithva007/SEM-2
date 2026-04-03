@@ -1,0 +1,76 @@
+<html>
+<body>
+ <form name="input1" action="mailto:dvijesh.bhatt@nirmauni.ac.in" method="post" 
+enctype="text/plain"
+onSubmit="window.alert('This form is being sent by email, even though it may not appear that anything has happened....')"
+>
+<!--
+<form name="input1" action="formex1.html" method="get" > 
+-->
+<!-- <form name="input1" action="formex1.html" method="get" novalidate> -->
+First Name: <input type="text" name="firstname" autocomplete="on" ><br/>
+Last Name: <input type="text" name="lastname" formnovalidate="formnovalidate"><br/>
+<br>
+Describe yourself here:<br>
+<textarea placeholder="Describe yourself here..." rows="5" cols="20" wrap="physical" autofocus>
+</textarea> <br><br>
+Label Explicit associations<br/>
+<label for="ADHAR"> Adhar Card Number:</label>
+<input type="text" name="aid" id="ADHAR" required placeholder="Please specify...."/>
+
+<br>Step attribute with min and max attribute <br>
+<input type="number" min="10" max="200" step="5">
+<br>
+List Attribute
+ <input list="browsers">
+
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Google Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist> 
+
+<br>
+Country code: <input type="text" name="country_code"
+pattern="[A-Za-z]{3}" title="Three letter country code"> <br>
+<br>
+Password: <input type="password" name="pw" pattern=".{6,}" title="Six or more characters">
+<br>
+
+<br>
+Password: <input type="password" name="pw" 
+pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+<br>
+
+<br>
+Label Implicit associations<br/>
+<label> Date of birth: <input type="Date" name="dofb" ></label>
+
+<br>
+Forming a group <br>
+<fieldset>
+	<legend> Personal information </legend> 
+	<label> Name: <input type="text" name="name" maxlength="20" value="Enter the your name here"/></label> <br/>
+	<label> Address: <input type="text" name="address" /></label><br/>
+	<label> Phone: <input type="text" name="phone" /></label><br/>
+</fieldset>
+
+<label for="volume">Volume</label>
+<input type="range" id="start" name="volume"
+         min="0" max="11" step="1">
+
+
+<br><br>
+<label for="file">File progress:</label>
+
+<progress id="file" max="100" value="70"> 70% </progress>
+
+<br><br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

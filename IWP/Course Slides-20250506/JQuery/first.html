@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery :first-child vs :first</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("p:first").css("color", "blue"); // Selects the first <p> element in the entire jQuery collection
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Heading</h2>
+        <p>First paragraph (Selected)</p>
+        <p>Second paragraph</p>
+    </div>
+    
+    <div>
+        <p>First child paragraph</p>
+        <p>Second paragraph</p>
+    </div>
+</body>
+</html>
